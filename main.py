@@ -37,3 +37,10 @@ user_dataclass = User_dataclass(id='1', name="Soohian", age="45")
 print(" ")
 print("user without pydantic:", user_dataclass)
 print("their id type is:", type(user_dataclass.id)) # no type coercion
+
+# Raise exception ValidationError because name is wrong type, and cannot be coerced.
+try:
+    user_wrong_type_input = User(id=1, name = 1000, age='45')
+except Exception as e:
+    print(" ")
+    print(str(e))
